@@ -1,0 +1,13 @@
+.log
+.checkstyle
+
+# gradle
+.gradle
+build/
+
+# idea
+#*.iml
+.idea/
+out
+
+
