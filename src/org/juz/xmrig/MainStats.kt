@@ -43,12 +43,10 @@ fun main(args: Array<String>) {
 
 			if (dataLine.startsWith("sending job result")) {
 				val nonce = extractLong(dataLine, "nonceInt: ")
-				val actualDiff = extractLong(dataLine, "accutalDiff: ")
+				val actualDiff = extractLong(dataLine, "actualDiff: ")
 				stats.newShare(nonce, actualDiff)
 			}
-
 		}
-
 
 		currentHour = hour
 //		println(it)
