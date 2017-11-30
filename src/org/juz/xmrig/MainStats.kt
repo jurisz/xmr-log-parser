@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
 	val threadCount = 3
 	val userHome = System.getProperty("user.home")
 	val folder = userHome + "/me/xmrig/build/"
-	val fileName = "xmrig.log"
+	val fileName = "xmrig-2017-11-29.log"
 
 	val logFile = File(folder + fileName)
 

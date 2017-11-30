@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
 
 	val userHome = System.getProperty("user.home")
 	val folder = userHome + "/me/xmrig/build/"
-	val fileName = "xmrig-2017-11-27.log"
+	val fileName = "xmrig-2017-11-29.log"
 	val outDataFileName = "xmr-shares-data.csv"
 
 	val logFile = File(folder + fileName)
@@ -33,7 +33,7 @@ fun main(args: Array<String>) {
 		if (dataLine.startsWith("sending job result")) {
 			val nonce = extractLong(dataLine, "nonceInt: ")
 			val diff = extractLong(dataLine, "diff: ")
-			val actualDiff = extractLong(dataLine, "acctualDiff: ")
+			val actualDiff = extractLong(dataLine, "actualDiff: ")
 
 			for (i in 0..75) {
 				val hex = blob?.substring(i * 2, (i + 1) * 2)
