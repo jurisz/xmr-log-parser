@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
 
 	val userHome = System.getProperty("user.home")
 	val folder = userHome + "/me/xmrig/build/"
-	val fileName = "xmrig-2017-11-29.log"
+	val fileName = "xmrig.log"
 	val outDataFileName = "xmr-shares-data.csv"
 
 	val logFile = File(folder + fileName)

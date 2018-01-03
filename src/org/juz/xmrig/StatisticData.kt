@@ -70,17 +70,20 @@ data class StatisticData(val threadCount: Int,
 		return best5Shares.toSortedMap(Comparator.reverseOrder())
 	}
 
+	fun sortedSharesPerThread(): MutableMap<String, Int> {
+		return sharesPerThread.toSortedMap()
+	}
+	
 	override fun toString(): String {
 		return "StatisticData(date=$date, hour=$hour, jobsCount=$jobsCount, submitShares=$submitShares, averageDiff: ${getAverageDifficulty()}," +
-				" longestJobSec=$longestJobSec, maxSharesForJob=$maxSharesForJob, sharesPerThread=$sharesPerThread, best5Shares=${sortedBest5Shares()}"
+				" longestJobSec=$longestJobSec, maxSharesForJob=$maxSharesForJob, sharesPerThread=${sortedSharesPerThread()}, best5Shares=${sortedBest5Shares()}"
 	}
-
 
 	fun csvHeaders(): String {
 		return "date; hour; jobsCount; submitShares; averageDiff; longestJobSec; maxSharesForJob; sharesPerThread; best5Shares"
 	}
 
 	fun csvData(): String {
-		return "$date; $hour; $jobsCount; $submitShares; ${getAverageDifficulty()}; $longestJobSec; $maxSharesForJob; $sharesPerThread; ${sortedBest5Shares()}"
+		return "$date; $hour; $jobsCount; $submitShares; ${getAverageDifficulty()}; $longestJobSec; $maxSharesForJob; ${sortedSharesPerThread()}; ${sortedBest5Shares()}"
 	}
 }

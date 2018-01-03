@@ -3,6 +3,7 @@ package org.juz.xmrig
 import java.io.File
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.format.DateTimeParseException
 import java.util.*
 
 
@@ -11,7 +12,7 @@ fun main(args: Array<String>) {
 	val threadCount = 3
 	val userHome = System.getProperty("user.home")
 	val folder = userHome + "/me/xmrig/build/"
-	val fileName = "xmrig-2017-11-29.log"
+	val fileName = "xmrig.log"
 
 	val logFile = File(folder + fileName)
 
@@ -21,8 +22,22 @@ fun main(args: Array<String>) {
 
 
 	logFile.forEachLine {
-		val date = LocalDate.parse(it.subSequence(1, 11))
-		val time = LocalTime.parse(it.subSequence(12, 20))
+
+		val date = try {
+			LocalDate.parse(it.subSequence(1, 11))
+		} catch (e: DateTimeParseException) {
+			null
+		}
+		val time = try {
+			LocalTime.parse(it.subSequence(12, 20))
+		} catch (e: DateTimeParseException) {
+			null
+		}
+		
+		if (date == null || time == null) {
+			return@forEachLine
+		}
+		
 		val hour = time.hour
 
 		val hourChanged = isHourChanged(hour, currentHour)
